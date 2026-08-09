@@ -29,15 +29,33 @@ from about import show_about
 # Base Directory
 # ----------------------------------------------------------
 BASE_DIR = Path(__file__).parent
-DATA_PATH = BASE_DIR / "processed_student_performance_data.csv"
+# DATA_PATH = BASE_DIR / "processed_student_performance_data.csv"
+# ----------------------------------------------------------
+# Dataset Paths
+# ----------------------------------------------------------
+DATA_FILES = [
+    BASE_DIR / "processed_student_performance_data_part_1.csv",
+    BASE_DIR / "processed_student_performance_data_part_2.csv",
+    BASE_DIR / "processed_student_performance_data_part_3.csv",
+    BASE_DIR / "processed_student_performance_data_part_4.csv"
+]
 
 # ----------------------------------------------------------
 # Load Dataset
 # ----------------------------------------------------------
 @st.cache_data
 def load_data():
-    df = pd.read_csv(DATA_PATH)
+    dataframes = [
+        pd.read_csv(file)
+        for file in DATA_FILES
+    ]
+    df = pd.concat(
+        dataframes,
+        ignore_index=True
+    )
     return df
+#    df = pd.read_csv(DATA_PATH)
+#    return df
 df = load_data()
 
 # ----------------------------------------------------------
