@@ -22,7 +22,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 # Project Paths
 # ----------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR / "model" / "student_performance_model.pkl"
+MODEL_PATH = BASE_DIR / "student_performance_model.pkl"
 
 # ----------------------------------------------------------
 # Part 2E : Model File Validation
